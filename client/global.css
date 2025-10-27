@@ -118,3 +118,31 @@
     white-space: pre;
   }
 }
+
+@layer utilities {
+  @keyframes levitate {
+    0%, 100% {
+      transform: translateY(0) rotate(40deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(40deg);
+    }
+  }
+
+  @keyframes levitate-slow {
+    0%, 100% {
+      transform: translateY(0) rotate(40deg);
+    }
+    50% {
+      transform: translateY(-15px) rotate(40deg);
+    }
+  }
+
+  .animate-levitate {
+    animation: levitate 3s ease-in-out infinite;
+  }
+
+  .animate-levitate-slow {
+    animation: levitate-slow 4s ease-in-out infinite;
+  }
+}
