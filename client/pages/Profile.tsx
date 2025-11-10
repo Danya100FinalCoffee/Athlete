@@ -293,7 +293,7 @@ export default function Profile() {
               <div className="grid grid-cols-2 gap-x-8 gap-y-6">
                 {/* Full Name */}
                 <div>
-                  <label className="block text-black/80 text-base mt-60">
+                  <label className="block text-black/80 text-base mt-3">
                     Фамилия и имя
                   </label>
                   <input
@@ -301,7 +301,7 @@ export default function Profile() {
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
                     placeholder="Захар Смирнов"
-                    className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none mt-60"
+                    className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none mt-3"
                   />
                 </div>
 
@@ -315,13 +315,13 @@ export default function Profile() {
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     placeholder="pauchuck"
-                    className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none mt-60"
+                    className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none mt-3"
                   />
                 </div>
 
                 {/* Gender */}
                 <div className="relative">
-                  <label className="block text-black/80 text-base mt-60">
+                  <label className="block text-black/80 text-base mt-3">
                     Пол
                   </label>
                   <div className="relative">
@@ -330,14 +330,14 @@ export default function Profile() {
                       value={gender}
                       onChange={(e) => setGender(e.target.value)}
                       placeholder="Выберите пол"
-                      className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none pr-10 mt-60"
+                      className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none pr-10 mt-3"
                     />
                     <button
                       onClick={() => setShowGenderDropdown(!showGenderDropdown)}
                       className="absolute right-4 top-1/2 -translate-y-1/2"
                     >
                       <svg
-                        className="w-[22px] h-[21px] opacity-50 mt-60"
+                        className="w-[22px] h-[21px] opacity-50 mt-3"
                         viewBox="0 0 22 21"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -357,7 +357,7 @@ export default function Profile() {
 
                 {/* City */}
                 <div className="relative">
-                  <label className="block text-black/80 text-base mt-60">
+                  <label className="block text-black/80 text-base mt-3">
                     Город
                   </label>
                   <div className="relative">
@@ -366,14 +366,14 @@ export default function Profile() {
                       value={city}
                       onChange={(e) => setCity(e.target.value)}
                       placeholder="Введите или начните поиск через выпадающее меню"
-                      className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none pr-10 mt-60"
+                      className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none pr-10 mt-3"
                     />
                     <button
                       onClick={() => setShowCityDropdown(!showCityDropdown)}
                       className="absolute right-4 top-1/2 -translate-y-1/2"
                     >
                       <svg
-                        className="w-[20px] h-[21px] opacity-50 mt-60"
+                        className="w-[20px] h-[21px] opacity-50 mt-3"
                         viewBox="0 0 20 21"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -393,7 +393,7 @@ export default function Profile() {
 
                 {/* Birthdate */}
                 <div className="relative">
-                  <label className="block text-black/80 text-base mt-60">
+                  <label className="block text-black/80 text-base mt-3">
                     Дата рождения
                   </label>
                   <div className="relative">
@@ -402,7 +402,7 @@ export default function Profile() {
                       value={birthdate}
                       onChange={(e) => setBirthdate(e.target.value)}
                       placeholder="Введите в формате ДД.ММ.ГГГГ"
-                      className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none pr-10 mt-60"
+                      className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none pr-10 mt-3"
                     />
                     <button
                       onClick={() =>
@@ -411,7 +411,7 @@ export default function Profile() {
                       className="absolute right-4 top-1/2 -translate-y-1/2"
                     >
                       <svg
-                        className="w-[22px] h-[20px] opacity-50 mt-60"
+                        className="w-[22px] h-[20px] opacity-50 mt-3"
                         viewBox="0 0 22 20"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -431,7 +431,7 @@ export default function Profile() {
 
                 {/* Telegram */}
                 <div className="relative">
-                  <label className="block text-black/80 text-base mt-60">
+                  <label className="block text-black/80 text-base mt-3">
                     Идентификатор пользователя в Telegram
                   </label>
                   <div className="relative">
@@ -440,7 +440,7 @@ export default function Profile() {
                       value={telegram}
                       onChange={(e) => setTelegram(e.target.value)}
                       placeholder="@Lovely_Specty"
-                      className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none pr-10 mt-60"
+                      className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none pr-10 mt-3"
                     />
                     <button
                       onClick={() =>
@@ -470,11 +470,11 @@ export default function Profile() {
 
               {/* Email Section */}
               <div className="mt-12">
-                <h3 className="text-black text-lg font-medium mt-60">
+                <h3 className="text-black text-lg font-medium mt-3">
                   Адрес электронной почты
                 </h3>
                 <div className="flex items-start gap-4">
-                  <div className="w-[42px] h-[42px] rounded-full bg-[#4182F9]/10 flex items-center justify-center flex-shrink-0 mt-60">
+                  <div className="w-[42px] h-[42px] rounded-full bg-[#4182F9]/10 flex items-center justify-center flex-shrink-0 mt-3">
                     <svg
                       className="w-[23px] h-[20px]"
                       viewBox="0 0 23 20"
