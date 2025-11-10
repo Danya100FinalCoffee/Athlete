@@ -5,11 +5,11 @@ export default function Profile() {
   const navigate = useNavigate();
   const [fullName, setFullName] = useState("Захар Смирнов");
   const [username, setUsername] = useState("pauchuck");
-  const [gender, setGender] = useState("НЕМЕЦКИЙ ВЕРТОЛЁТ PANZERKAMPFGEN-5846");
-  const [city, setCity] = useState("Великие Луки");
-  const [birthdate, setBirthdate] = useState("02.02.1451");
+  const [gender, setGender] = useState("");
+  const [city, setCity] = useState("");
+  const [birthdate, setBirthdate] = useState("");
   const [telegram, setTelegram] = useState("@Lovely_Specty");
-  const [email] = useState("vadik8c@gmail.com");
+  const [email] = useState("alexarawles@gmail.com");
 
   const [showGenderDropdown, setShowGenderDropdown] = useState(false);
   const [showCityDropdown, setShowCityDropdown] = useState(false);
@@ -33,7 +33,7 @@ export default function Profile() {
         {/* Sidebar */}
         <div className="w-[76px] border-r-2 border-[#5F5C5C] relative flex flex-col items-center pt-8 gap-12">
           {/* Navigation Icons */}
-          <div className="space-y-8 flex flex-col items-center mt-96">
+          <div className="space-y-8 flex flex-col items-center">
             {/* Dashboard Icon - Active */}
             <div className="relative">
               <div className="absolute left-0 top-0 w-[76px] h-[50px] bg-gradient-to-r from-[#4182F9]/50 to-[#4182F9]/0 -ml-10 mt-6 "></div>
@@ -266,14 +266,14 @@ export default function Profile() {
           </div>
 
           {/* Profile Card */}
-          <div className="rounded-[10px] overflow-hidden">
+          <div className="rounded-[10px] overflow-hidden ">
             {/* Header Section */}
-            <div className="h-[88px] bg-gradient-to-r from-[#878DB3] to-[#4C5AD1]/30 relative">
-              <div className="absolute inset-0 flex items-center px-7 mt-32">
+            <div className="h-[88px] bg-gradient-to-r from-[#878DB3] to-[#001AFF]/30 opacity-50 relative ">
+              <div className="flex items-center px-7 py-8 gap-6">
                 <img
                   src="https://api.builder.io/api/v1/image/assets/TEMP/344dcf4b50f86e9e2496c7dbc315e853b4b8c063?width=178"
                   alt={fullName}
-                  className="w-[89px] h-[86px] rounded-full absolute left-7 top-[28px]"
+                  className="w-[89px] h-[86px] rounded-full absolute left-7 top-[100px]"
                 />
                 <div className="ml-[120px] mt-28">
                   <h2 className="text-black text-xl font-medium">{fullName}</h2>
@@ -281,7 +281,7 @@ export default function Profile() {
                 </div>
                 <button
                   onClick={handleSaveSettings}
-                  className="ml-auto bg-[#4182F9] text-white px-5 py-2 rounded-lg text-base mt-44"
+                  className="ml-auto bg-[#4182F9] text-white px-5 py-2 rounded-lg text-base mt-32"
                 >
                   Сохранить настройки
                 </button>
@@ -289,7 +289,7 @@ export default function Profile() {
             </div>
 
             {/* Form Section */}
-            <div className="bg-white/50 p-8 h-[600px]">
+            <div className="bg-white/50 p-8 min-h-[600px]">
               <div className="grid grid-cols-2 gap-x-8 gap-y-6">
                 {/* Full Name */}
                 <div>
