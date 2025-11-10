@@ -293,7 +293,7 @@ export default function Profile() {
               <div className="grid grid-cols-2 gap-x-8 gap-y-6">
                 {/* Full Name */}
                 <div>
-                  <label className="block text-black/80 text-base mt-3">
+                  <label className="block text-black/80 text-base mt-15">
                     Фамилия и имя
                   </label>
                   <input
@@ -301,7 +301,7 @@ export default function Profile() {
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
                     placeholder="Захар Смирнов"
-                    className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none mt-3"
+                    className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none mt-15"
                   />
                 </div>
 
