@@ -1,44 +1,92 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function Profile() {
+interface Request {
+  id: number;
+  eventName: string;
+  date: string;
+  sport: string;
+  applicationStatus: string;
+  gameResult: string;
+  resultColor: "gray" | "black" | "green" | "red";
+}
+
+export default function Requests() {
   const navigate = useNavigate();
-  const [fullName, setFullName] = useState("Захар Смирнов");
-  const [username, setUsername] = useState("pauchuck");
-  const [gender, setGender] = useState("");
-  const [city, setCity] = useState("");
-  const [birthdate, setBirthdate] = useState("");
-  const [telegram, setTelegram] = useState("@Lovely_Specty");
-  const [email] = useState("alexarawles@gmail.com");
 
-  const [showGenderDropdown, setShowGenderDropdown] = useState(false);
-  const [showCityDropdown, setShowCityDropdown] = useState(false);
-  const [showBirthdateDropdown, setShowBirthdateDropdown] = useState(false);
-  const [showTelegramDropdown, setShowTelegramDropdown] = useState(false);
+  const requests: Request[] = [
+    {
+      id: 1,
+      eventName: "Lorem Ipsum Cup #1",
+      date: "15.10.2025, 14:50",
+      sport: "Волейбол",
+      applicationStatus: "Одобрена",
+      gameResult: "Н/Д",
+      resultColor: "gray",
+    },
+    {
+      id: 2,
+      eventName: "Lorem Ipsum Cup #1",
+      date: "15.10.2025, 14:50",
+      sport: "Волейбол",
+      applicationStatus: "Отклонена",
+      gameResult: "Н/Д",
+      resultColor: "gray",
+    },
+    {
+      id: 3,
+      eventName: "Lorem Ipsum Cup #1",
+      date: "15.10.2025, 14:50",
+      sport: "Волейбол",
+      applicationStatus: "Завершена",
+      gameResult: "Отменена",
+      resultColor: "black",
+    },
+    {
+      id: 4,
+      eventName: "Lorem Ipsum Cup #1",
+      date: "15.10.2025, 14:50",
+      sport: "Волейбол",
+      applicationStatus: "Завершена",
+      gameResult: "Победа",
+      resultColor: "green",
+    },
+    {
+      id: 5,
+      eventName: "Lorem Ipsum Cup #1",
+      date: "15.10.2025, 14:50",
+      sport: "Волейбол",
+      applicationStatus: "Завершена",
+      gameResult: "Поражение",
+      resultColor: "red",
+    },
+  ];
 
-  const handleSaveSettings = () => {
-    console.log("Saving settings:", {
-      fullName,
-      username,
-      gender,
-      city,
-      birthdate,
-      telegram,
-    });
+  const getResultCircleColor = (color: string) => {
+    switch (color) {
+      case "gray":
+        return "bg-[#848484]";
+      case "black":
+        return "bg-black";
+      case "green":
+        return "bg-[#48FF55]/38";
+      case "red":
+        return "bg-[#FF7B7B]/57";
+      default:
+        return "bg-gray-400";
+    }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-[#493D02]">
+    <div className="min-h-screen bg-gradient-to-b from-black to-[#493D02] overflow-y-auto">
       <div className="flex h-screen">
         {/* Sidebar */}
         <div className="w-[76px] border-r-2 border-[#5F5C5C] relative flex flex-col items-center pt-8 gap-12">
           {/* Navigation Icons */}
           <div className="space-y-8 flex flex-col items-center mt-96">
-            {/* Dashboard Icon - Active */}
-            <div className="relative">
-              <div className="absolute left-0 top-0 w-[76px] h-[50px] bg-gradient-to-r from-[#4182F9]/50 to-[#4182F9]/0 -ml-10 mt-6 "></div>
+            {/* Dashboard Icon */}
+            <button onClick={() => navigate('/profile')}>
               <svg
-                className="w-[21px] h-[22px] relative z-10 mt-10"
+                className="w-[21px] h-[22px] opacity-50"
                 viewBox="0 0 21 22"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +108,7 @@ export default function Profile() {
                   fill="white"
                 />
               </svg>
-            </div>
+            </button>
 
             {/* Analytics Icon */}
             <svg
@@ -115,10 +163,11 @@ export default function Profile() {
               />
             </svg>
 
-            {/* Messages Icon */}
-            <button onClick={() => navigate('/requests')}>
+            {/* Messages Icon - Active */}
+            <div className="relative">
+              <div className="absolute left-0 top-0 w-[76px] h-[50px] bg-gradient-to-r from-[#4182F9]/50 to-[#4182F9]/0 -ml-10"></div>
               <svg
-                className="w-[21px] h-[21px] opacity-50 hover:opacity-100 transition-opacity"
+                className="w-[21px] h-[21px] relative z-10"
                 viewBox="0 0 21 21"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -161,7 +210,7 @@ export default function Profile() {
                   strokeLinejoin="round"
                 />
               </svg>
-            </button>
+            </div>
 
             {/* Settings Icon */}
             <svg
@@ -191,7 +240,7 @@ export default function Profile() {
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 p-7">
+        <div className="flex-1 p-7 overflow-y-auto">
           {/* Header */}
           <div className="flex items-center justify-between mb-12">
             <div>
@@ -260,246 +309,82 @@ export default function Profile() {
 
               {/* Profile Picture */}
               <img
-                src="https://api.builder.io/api/v1/image/assets/TEMP/000c31178b1986558f577f90ead0f3bed101a8c7?width=94"
+                src="https://api.builder.io/api/v1/image/assets/TEMP/57b1825b265d4113d32bb4e7a341952f19bb981b?width=94"
                 alt="Profile"
                 className="w-[47px] h-[44px] rounded-[10px]"
               />
             </div>
           </div>
 
-          {/* Profile Card */}
-          <div className="rounded-[10px] overflow-hidden ">
-            {/* Header Section */}
-            <div className="h-[88px] bg-gradient-to-r from-[#878DB3] to-[#001AFF]/30 opacity-50 relative ">
-              <div className="flex items-center px-7 py-8 gap-6">
-                <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/344dcf4b50f86e9e2496c7dbc315e853b4b8c063?width=178"
-                  alt={fullName}
-                  className="w-[89px] h-[86px] rounded-full absolute left-7 top-[100px] mt-6"
-                />
-                <div className="ml-[120px] mt-28">
-                  <h2 className="text-black text-xl font-medium">{fullName}</h2>
-                  <p className="text-black/50 text-base">{email}</p>
-                </div>
-                <button
-                  onClick={handleSaveSettings}
-                  className="ml-auto bg-[#4182F9] text-white px-5 py-2 rounded-lg text-base mt-32"
+          {/* Requests Section */}
+          <div className="rounded-[10px] bg-[#DDD]/50 p-8 min-h-[918px]">
+            <h2 className="text-black text-[50px] font-light text-center mb-8">
+              Текущие заявки
+            </h2>
+
+            {/* Requests List */}
+            <div className="space-y-5">
+              {requests.map((request) => (
+                <div
+                  key={request.id}
+                  className="border-[3px] border-black rounded-[50px] p-6 flex items-center justify-between bg-white/5 backdrop-blur-sm"
+                  style={{
+                    background:
+                      "linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05))",
+                    mixBlendMode: "plus-darker",
+                  }}
                 >
-                  Сохранить настройки
-                </button>
-              </div>
-            </div>
+                  {/* Left Side - Event Info */}
+                  <div className="flex-1">
+                    <h3 className="text-black text-4xl font-light mb-3">
+                      {request.eventName}
+                    </h3>
+                    <div className="flex items-center gap-3">
+                      <div className="border-[3px] border-black rounded-[50px] px-5 py-2">
+                        <span className="text-black text-base font-light">
+                          {request.date}
+                        </span>
+                      </div>
+                      <div className="border-[3px] border-black rounded-[50px] px-5 py-1.5">
+                        <span className="text-black text-base font-light">
+                          {request.sport}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
 
-            {/* Form Section */}
-            <div className="bg-white/50 p-8 min-h-[600px]">
-              <div className="grid grid-cols-2 gap-x-8 gap-y-6">
-                {/* Full Name */}
-                <div>
-                  <label className="block text-black/80 text-base mb-2 mt-40 ml-2">
-                    Фамилия и имя
-                  </label>
-                  <input
-                    type="text"
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    placeholder="Захар Смирнов"
-                    className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none"
-                  />
-                </div>
-
-                {/* Username */}
-                <div>
-                  <label className="block text-black/80 text-base mb-2 mt-40 ml-2">
-                    Имя пользователя
-                  </label>
-                  <input
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    placeholder="pauchuck"
-                    className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none"
-                  />
-                </div>
-
-                {/* Gender */}
-                <div className="relative">
-                  <label className="block text-black/80 text-base mb-2">
-                    Пол
-                  </label>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      value={gender}
-                      onChange={(e) => setGender(e.target.value)}
-                      placeholder="Выберите пол"
-                      className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none pr-10"
-                    />
-                    <button
-                      onClick={() => setShowGenderDropdown(!showGenderDropdown)}
-                      className="absolute right-4 top-1/2 -translate-y-1/2"
-                    >
-                      <svg
-                        className="w-[22px] h-[21px] opacity-50"
-                        viewBox="0 0 22 21"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M18.2602 7.83124L12.2836 13.5362C11.5777 14.21 10.4227 14.21 9.7169 13.5362L3.74023 7.83124"
-                          stroke="#292D32"
-                          strokeWidth="1.5"
-                          strokeMiterlimit="10"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </button>
+                  {/* Right Side - Status Info */}
+                  <div className="border-[3px] border-black rounded-[50px] px-8 py-4 min-w-[466px]">
+                    <div className="space-y-3">
+                      {/* Application Status */}
+                      <div className="flex items-center justify-between">
+                        <span className="text-black text-2xl font-light">
+                          Статус заявки
+                        </span>
+                        <span className="text-black text-2xl font-light">
+                          {request.applicationStatus}
+                        </span>
+                      </div>
+                      {/* Game Result */}
+                      <div className="flex items-center justify-between">
+                        <span className="text-black text-2xl font-light">
+                          Результат игры
+                        </span>
+                        <div className="flex items-center gap-3">
+                          <div
+                            className={`w-[23px] h-[23px] rounded-full border border-black ${getResultCircleColor(
+                              request.resultColor
+                            )}`}
+                          ></div>
+                          <span className="text-black text-2xl font-light">
+                            {request.gameResult}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-
-                {/* City */}
-                <div className="relative">
-                  <label className="block text-black/80 text-base mb-2">
-                    Город
-                  </label>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      value={city}
-                      onChange={(e) => setCity(e.target.value)}
-                      placeholder="Введите или начните поиск через выпадающее меню"
-                      className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none pr-10"
-                    />
-                    <button
-                      onClick={() => setShowCityDropdown(!showCityDropdown)}
-                      className="absolute right-4 top-1/2 -translate-y-1/2"
-                    >
-                      <svg
-                        className="w-[20px] h-[21px] opacity-50"
-                        viewBox="0 0 20 21"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M16.5999 7.83124L11.1666 13.5362C10.5249 14.21 9.4749 14.21 8.83324 13.5362L3.3999 7.83124"
-                          stroke="#292D32"
-                          strokeWidth="1.5"
-                          strokeMiterlimit="10"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-
-                {/* Birthdate */}
-                <div className="relative">
-                  <label className="block text-black/80 text-base mb-2">
-                    Дата рождения
-                  </label>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      value={birthdate}
-                      onChange={(e) => setBirthdate(e.target.value)}
-                      placeholder="Введите в формате ДД.ММ.ГГГГ"
-                      className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none pr-10"
-                    />
-                    <button
-                      onClick={() =>
-                        setShowBirthdateDropdown(!showBirthdateDropdown)
-                      }
-                      className="absolute right-4 top-1/2 -translate-y-1/2"
-                    >
-                      <svg
-                        className="w-[22px] h-[20px] opacity-50"
-                        viewBox="0 0 22 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M18.2602 7.45831L12.2836 12.8916C11.5777 13.5333 10.4227 13.5333 9.7169 12.8916L3.74023 7.45831"
-                          stroke="#292D32"
-                          strokeWidth="1.5"
-                          strokeMiterlimit="10"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-
-                {/* Telegram */}
-                <div className="relative">
-                  <label className="block text-black/80 text-base mb-2">
-                    Идентификатор пользователя в Telegram
-                  </label>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      value={telegram}
-                      onChange={(e) => setTelegram(e.target.value)}
-                      placeholder="@Lovely_Specty"
-                      className="w-full bg-[#F9F9F9]/50 rounded-lg px-4 py-3 text-black/40 text-base outline-none pr-10"
-                    />
-                    <button
-                      onClick={() =>
-                        setShowTelegramDropdown(!showTelegramDropdown)
-                      }
-                      className="absolute right-4 top-1/2 -translate-y-1/2"
-                    >
-                      <svg
-                        className="w-[20px] h-[20px] opacity-50"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M16.5999 7.45831L11.1666 12.8916C10.5249 13.5333 9.4749 13.5333 8.83324 12.8916L3.3999 7.45831"
-                          stroke="#292D32"
-                          strokeWidth="1.5"
-                          strokeMiterlimit="10"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Email Section */}
-              <div className="mt-12">
-                <h3 className="text-black text-lg font-medium mb-4">
-                  Адрес электронной почты
-                </h3>
-                <div className="flex items-start gap-4">
-                  <div className="w-[42px] h-[42px] rounded-full bg-[#4182F9]/10 flex items-center justify-center flex-shrink-0">
-                    <svg
-                      className="w-[23px] h-[20px]"
-                      viewBox="0 0 23 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M16.2915 2.91669H6.70817C3.83317 2.91669 1.9165 4.16669 1.9165 7.08335V12.9167C1.9165 15.8334 3.83317 17.0834 6.70817 17.0834H16.2915C19.1665 17.0834 21.0832 15.8334 21.0832 12.9167V7.08335C21.0832 4.16669 19.1665 2.91669 16.2915 2.91669ZM16.7419 7.99169L13.7423 10.075C13.1098 10.5167 12.3048 10.7334 11.4998 10.7334C10.6948 10.7334 9.88025 10.5167 9.25734 10.075L6.25775 7.99169C5.95109 7.77502 5.90317 7.37502 6.14275 7.10835C6.39192 6.84169 6.84234 6.79169 7.149 7.00835L10.1486 9.09169C10.8769 9.60002 12.1132 9.60002 12.8415 9.09169L15.8411 7.00835C16.1478 6.79169 16.6078 6.83335 16.8473 7.10835C17.0965 7.37502 17.0486 7.77502 16.7419 7.99169Z"
-                        fill="#4182F9"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-black text-base">{email}</p>
-                    <p className="text-black/50 text-base">
-                      Изменен 10 дней назад
-                    </p>
-                  </div>
-                  <button className="ml-auto bg-[#4182F9] text-white px-5 py-2 rounded-lg text-base">
-                    Изменить адрес эл. почты
-                  </button>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
