@@ -411,7 +411,7 @@ export default function Settings() {
             <div className="flex gap-4 items-center justify-end mb-6">
               <button
                 onClick={handleLogout}
-                className="w-[237px] h-[38px] rounded-lg bg-[#B52626] text-white text-base text-center"
+                className="w-[257px] h-[38px] rounded-lg bg-[#B52626] text-white text-base text-center"
               >
                 Выйти
               </button>
@@ -421,7 +421,7 @@ export default function Settings() {
               
               <button
                 onClick={handleDeleteAccount}
-                className="w-[217px] h-[38px] rounded-lg bg-[#B52626] text-white text-base text-center"
+                className="w-[257px] h-[38px] rounded-lg bg-[#B52626] text-white text-base text-center"
               >
                 Удалить учетную запись
               </button>
