@@ -34,10 +34,10 @@ export const REQUEST_DATA_MOCK: RequestData = {
   maxPlayers: "256",
   avgRating: "~50000",
   venueLabel: "Место проведения",
-  venueMapImage: "https://api.builder.io/api/v1/image/assets/TEMP/9a209da63c35fc4d865528a9f05eda5d22acbc85",
+  venueMapImage: "https://cdn.builder.io/api/v1/image/assets%2Fd49844c729c245a9a4564f0af0729171%2Fcd0014cda92a47e2915f318e0e4b05b9?format=webp&width=800",
   hasApplied: false,
   notAppliedMessage: "Вы еще не подавали запроса на участие в этом мероприятии.",
-  stickerImage: "https://api.builder.io/api/v1/image/assets/TEMP/592971601b73e2186d29e697d3b86bb56af5f25e",
+  stickerImage: "https://cdn.builder.io/o/assets%2Fd49844c729c245a9a4564f0af0729171%2F5f2e42be41dc4b30813daad69fcc80a9?alt=media&token=bf31a541-7545-4c51-a2f8-674804f480c5&apiKey=d49844c729c245a9a4564f0af0729171",
   players: [
     {
       id: 1,
