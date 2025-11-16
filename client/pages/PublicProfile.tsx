@@ -125,7 +125,7 @@ export default function PublicProfile() {
                   </p>
                 </div>
                 <div className="border border-white rounded-[20px] px-6 py-3">
-                  <p className="text-white text-l opacity-80">
+                  <p className="text-white text-xl opacity-80">
                     Возраст: {PUBLIC_PROFILE_DATA.age}
                   </p>
                 </div>
@@ -139,7 +139,7 @@ export default function PublicProfile() {
 
             {/* Cat Video */}
             <div className="flex flex-col items-center mt-6">
-              <div className="w-[150px] h-[150px] rounded-lg border-2 border-white overflow-hidden bg-gray-800">
+              <div className="w-[150px] h-[150px] rounded-lg overflow-hidden bg-gray-800">
                 <video
                   src="/cat_stick.webm"
                   autoPlay
