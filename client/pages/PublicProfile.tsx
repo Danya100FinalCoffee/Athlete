@@ -104,12 +104,12 @@ export default function PublicProfile() {
             <img
               src={`${PUBLIC_PROFILE_DATA.avatar}?width=330`}
               alt="Profile Avatar"
-              className="w-[165px] h-[165px] rounded-full object-cover mt-20 flex-shrink-0"
+              className="w-[140px] h-[140px] rounded-full object-cover mt-20 flex-shrink-0"
             />
 
             {/* Info */}
             <div className="flex-1 mt-12">
-              <h1 className="text-white text-[40px] font-light mb-6">
+              <h1 className="text-white text-[36px] font-light mb-6">
                 {PUBLIC_PROFILE_DATA.playerName}
               </h1>
 
