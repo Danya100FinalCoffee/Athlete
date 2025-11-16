@@ -435,7 +435,7 @@ export default function PublicProfile() {
                       className="w-[38px] h-[36px] rounded-full object-cover"
                     />
                     <p
-                      className="text-white text-[10px] font-bold leading-tight flex-1"
+                      className="text-white text-[10px]  leading-tight flex-1"
                       style={{ WebkitTextStroke: "1px white" }}
                     >
                       {PUBLIC_PROFILE_DATA.overallRanking.name}
