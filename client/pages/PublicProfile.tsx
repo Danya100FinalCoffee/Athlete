@@ -124,7 +124,7 @@ export default function PublicProfile() {
                     Пол: {PUBLIC_PROFILE_DATA.gender}
                   </p>
                 </div>
-                <div className="border border-white rounded-[30px] px-6 py-3">
+                <div className="border border-white rounded-[10px] px-6 py-3">
                   <p className="text-white text-xl opacity-80">
                     Возраст: {PUBLIC_PROFILE_DATA.age}
                   </p>
