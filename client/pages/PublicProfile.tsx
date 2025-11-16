@@ -329,7 +329,7 @@ export default function PublicProfile() {
                   </div>
                 </div>
                 <div
-                  className="flex-1 rounded-[550px] border-[1.5px] border-black shadow-[0_14px_4px_0_rgba(0,0,0,0.50)] px-6 py-4"
+                  className="flex-1 rounded-[55px] border-[10.5px] border-black shadow-[0_14px_4px_0_rgba(0,0,0,0.50)] px-6 py-4"
                   style={{
                     background: `linear-gradient(90deg, ${PUBLIC_PROFILE_DATA.otherSports[3].gradientFrom} 0%, ${PUBLIC_PROFILE_DATA.otherSports[3].gradientTo} 100%)`,
                   }}
