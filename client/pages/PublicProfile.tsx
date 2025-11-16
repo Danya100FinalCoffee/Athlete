@@ -163,11 +163,11 @@ export default function PublicProfile() {
                 }}
               >
                 {/* Badge Image positioned above */}
-                <div className="absolute -top-32 left-1/2 transform -translate-x-1/2">
+                <div className="absolute -top-32 left-1/2 transform -translate-x-1/2 scale-200">
                   <img
                     src={`${PUBLIC_PROFILE_DATA.bestSport.badgeImage}?width=546`}
                     alt="Badge"
-                    className="w-[2730px] h-[2700px] object-contain"
+                    className="w-[273px] h-[270px] object-contain"
                   />
                 </div>
 
