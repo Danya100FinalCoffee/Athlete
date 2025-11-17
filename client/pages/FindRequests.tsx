@@ -82,7 +82,7 @@ export default function FindRequests() {
       id: 5,
       title: "Бухич на заборах МАИ №5",
       description: "Вы будете играть в Литрбол!",
-      venue: "Моско��ский авиационный...",
+      venue: "Московский авиационный...",
       dateTime: "18.10.2025, 23:33",
       players: "Игроков: 256/256",
       avgRating: "Ср. рейтинг: ~50000",
@@ -150,7 +150,7 @@ export default function FindRequests() {
     },
     {
       id: 12,
-      title: "Бухич н�� заборах МАИ №12",
+      title: "Бухич на заборах МАИ №12",
       description: "Вы будете играть в Литрбол!",
       venue: "Московский авиационный...",
       dateTime: "18.10.2025, 23:33",
@@ -275,7 +275,7 @@ export default function FindRequests() {
 
               <div className="flex gap-4">
                 {/* Sport Filter */}
-                <div className="relative">
+                <div className="relative" ref={sportDropdownRef}>
                   <button
                     onClick={() => setShowSportDropdown(!showSportDropdown)}
                     className="w-[380px] h-[76px] rounded-[20px] border-[2.6px] border-black bg-[#D9D9D9]/40 flex items-center justify-center px-6 relative"
@@ -316,10 +316,28 @@ export default function FindRequests() {
                       {sportFilter}
                     </span>
                   </button>
+
+                  {/* Sport Dropdown Menu */}
+                  {showSportDropdown && (
+                    <div className="absolute top-[88px] left-0 w-[380px] bg-[#2a2a2a] border-[2.6px] border-black rounded-[20px] shadow-lg z-50">
+                      {SPORTS.map((sport) => (
+                        <button
+                          key={sport}
+                          onClick={() => {
+                            setSportFilter(sport);
+                            setShowSportDropdown(false);
+                          }}
+                          className="w-full px-6 py-4 text-left text-white text-[20px] font-light hover:bg-[#3a3a3a] transition-colors first:rounded-t-[16px] last:rounded-b-[16px] border-b border-white/20 last:border-b-0"
+                        >
+                          {sport}
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
                 {/* Date Filter */}
-                <div className="relative">
+                <div className="relative" ref={dateDropdownRef}>
                   <button
                     onClick={() => setShowDateDropdown(!showDateDropdown)}
                     className="w-[380px] h-[76px] rounded-[20px] border-[2.6px] border-black bg-[#D9D9D9]/40 flex items-center justify-center px-6 relative"
@@ -360,6 +378,24 @@ export default function FindRequests() {
                       {dateFilter}
                     </span>
                   </button>
+
+                  {/* Date Dropdown Menu */}
+                  {showDateDropdown && (
+                    <div className="absolute top-[88px] left-0 w-[380px] bg-[#2a2a2a] border-[2.6px] border-black rounded-[20px] shadow-lg z-50">
+                      {DATE_FILTERS.map((date) => (
+                        <button
+                          key={date}
+                          onClick={() => {
+                            setDateFilter(date);
+                            setShowDateDropdown(false);
+                          }}
+                          className="w-full px-6 py-4 text-left text-white text-[20px] font-light hover:bg-[#3a3a3a] transition-colors first:rounded-t-[16px] last:rounded-b-[16px] border-b border-white/20 last:border-b-0"
+                        >
+                          {date}
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
