@@ -154,7 +154,7 @@ export default function RequestData() {
                             <p
                               className="text-white text-[10px] font-bold text-center leading-tight"
                               style={{
-                                WebkitTextStroke: "0.2px black",
+                                WebkitTextStroke: "0px black",
                               }}
                             >
                               {player.name}
