@@ -282,7 +282,7 @@ export default function Settings() {
               </div>
 
               {/* Profile Picture */}
-              <<button
+              <button
                 onClick={() => navigate("/profile")}
               >
                 <img
