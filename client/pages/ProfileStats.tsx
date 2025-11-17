@@ -243,7 +243,7 @@ export default function ProfileStats() {
               </div>
 
               {/* Profile Picture */}
-              <<button
+              <button
                 onClick={() => navigate("/profile")}
               >
                 <img
