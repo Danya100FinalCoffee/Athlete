@@ -20,6 +20,23 @@ export default function FindRequests() {
   const [showSportDropdown, setShowSportDropdown] = useState(false);
   const [showDateDropdown, setShowDateDropdown] = useState(false);
 
+  const sportDropdownRef = useRef<HTMLDivElement>(null);
+  const dateDropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (sportDropdownRef.current && !sportDropdownRef.current.contains(event.target as Node)) {
+        setShowSportDropdown(false);
+      }
+      if (dateDropdownRef.current && !dateDropdownRef.current.contains(event.target as Node)) {
+        setShowDateDropdown(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   const requests: RequestItem[] = [
     {
       id: 1,
@@ -65,7 +82,7 @@ export default function FindRequests() {
       id: 5,
       title: "Бухич на заборах МАИ №5",
       description: "Вы будете играть в Литрбол!",
-      venue: "Московский авиационный...",
+      venue: "Моско��ский авиационный...",
       dateTime: "18.10.2025, 23:33",
       players: "Игроков: 256/256",
       avgRating: "Ср. рейтинг: ~50000",
@@ -133,7 +150,7 @@ export default function FindRequests() {
     },
     {
       id: 12,
-      title: "Бухич на заборах МАИ №12",
+      title: "Бухич н�� заборах МАИ №12",
       description: "Вы будете играть в Литрбол!",
       venue: "Московский авиационный...",
       dateTime: "18.10.2025, 23:33",
