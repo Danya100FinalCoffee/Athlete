@@ -126,7 +126,7 @@ export default function FindRequests() {
       dateTime: "18.10.2025, 23:33",
       players: "Игроков: 256/256",
       avgRating: "Ср. рейтинг: ~50000",
-      sport: "Лит��бол",
+      sport: "Литрбол",
     },
     {
       id: 10,
@@ -463,7 +463,7 @@ export default function FindRequests() {
             </div>
 
             {/* Create Request Button */}
-            <div className="flex justify-center mt-8">
+            <div className="flex justify-center mt-12">
               <button
                 onClick={() => navigate("/create-request")}
                 className="px-8 py-3 bg-[#4182F9] rounded-[25px] text-white text-[22px] font-normal hover:bg-[#3571e8] transition-colors shadow-[0_8px_4px_rgba(0,0,0,0.5)]"
