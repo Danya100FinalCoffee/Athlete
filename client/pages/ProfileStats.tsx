@@ -490,14 +490,6 @@ export default function ProfileStats() {
                       }}
                     />
                   </motion.div>
-                  <div className="absolute bottom-8 text-center">
-                    <p className="text-black text-sm">
-                      Кликните на кота для забавного прыжка! 🎉
-                    </p>
-                    <p className="text-black/60 text-xs mt-2">
-                      Прыжков: {bounceCount}
-                    </p>
-                  </div>
                 </div>
               </div>
             </div>
