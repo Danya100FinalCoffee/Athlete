@@ -33,13 +33,22 @@ export default function CreateRequest() {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (sportDropdownRef.current && !sportDropdownRef.current.contains(event.target as Node)) {
+      if (
+        sportDropdownRef.current &&
+        !sportDropdownRef.current.contains(event.target as Node)
+      ) {
         setShowSportDropdown(false);
       }
-      if (dateDropdownRef.current && !dateDropdownRef.current.contains(event.target as Node)) {
+      if (
+        dateDropdownRef.current &&
+        !dateDropdownRef.current.contains(event.target as Node)
+      ) {
         setShowDateDropdown(false);
       }
-      if (locationDropdownRef.current && !locationDropdownRef.current.contains(event.target as Node)) {
+      if (
+        locationDropdownRef.current &&
+        !locationDropdownRef.current.contains(event.target as Node)
+      ) {
         setShowLocationDropdown(false);
       }
     };
@@ -148,15 +157,15 @@ export default function CreateRequest() {
           {/* Main Content Area */}
           <div className="rounded-[10px] bg-[#797777]/50 p-8 min-h-[918px]">
             <div
-            className="absolute inset-0 -z-10 rounded-[50px]"
-            style={{
-              backgroundImage:
-                "url('https://cdn.builder.io/api/v1/image/assets%2F9b4b6868ed8d4ab0841339e996a44e0f%2F29814a62ea5a4dbaab3e007976816fb6?format=webp&width=800')",
-              backgroundSize: "250px 250px",
-              backgroundPosition: "0 0",
-              backgroundRepeat: "repeat",
-              opacity: 0.05,
-            }}
+              className="absolute inset-0 -z-10 rounded-[50px]"
+              style={{
+                backgroundImage:
+                  "url('https://cdn.builder.io/api/v1/image/assets%2F9b4b6868ed8d4ab0841339e996a44e0f%2F29814a62ea5a4dbaab3e007976816fb6?format=webp&width=800')",
+                backgroundSize: "250px 250px",
+                backgroundPosition: "0 0",
+                backgroundRepeat: "repeat",
+                opacity: 0.05,
+              }}
             ></div>
             {/* Title */}
             <h1 className="text-white text-[64px] font-light text-center mb-8 stroke-black">
@@ -164,7 +173,10 @@ export default function CreateRequest() {
             </h1>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <form
+              onSubmit={handleSubmit}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+            >
               {/* Left Column */}
               <div className="space-y-6">
                 {/* Sport Selection */}
@@ -178,7 +190,9 @@ export default function CreateRequest() {
                       onClick={() => setShowSportDropdown(!showSportDropdown)}
                       className="w-full h-[68px] rounded-[15px] bg-[#F9F9F9]/50 px-5 flex items-center justify-between"
                     >
-                      <span className={`text-[26px] ${sport ? "text-black" : "text-black/40"}`}>
+                      <span
+                        className={`text-[26px] ${sport ? "text-black" : "text-black/40"}`}
+                      >
                         {sport || "Баскетбол"}
                       </span>
                       <svg
@@ -242,8 +256,11 @@ export default function CreateRequest() {
                       onClick={() => setShowDateDropdown(!showDateDropdown)}
                       className="w-full h-[68px] rounded-[15px] bg-[#F9F9F9]/50 px-5 flex items-center justify-between"
                     >
-                      <span className={`text-[24px] ${date ? "text-black" : "text-black/40"}`}>
-                        {date || "Выберите из списка или введите в формате ДД.ММ.ГГГГ"}
+                      <span
+                        className={`text-[24px] ${date ? "text-black" : "text-black/40"}`}
+                      >
+                        {date ||
+                          "Выберите из списка или введите в формате ДД.ММ.ГГГГ"}
                       </span>
                       <svg
                         className="w-[35px] h-[35px] opacity-50"
@@ -298,15 +315,20 @@ export default function CreateRequest() {
                 {/* Location */}
                 <div>
                   <label className="block text-white text-[32px] font-normal mb-4 opacity-80">
-                    Место проведения (начинайте вводить или выберите точку на карте)
+                    Место проведения (начинайте вводить или выберите точку на
+                    карте)
                   </label>
                   <div className="relative" ref={locationDropdownRef}>
                     <button
                       type="button"
-                      onClick={() => setShowLocationDropdown(!showLocationDropdown)}
+                      onClick={() =>
+                        setShowLocationDropdown(!showLocationDropdown)
+                      }
                       className="w-full h-[68px] rounded-[15px] bg-[#F9F9F9]/50 px-5 flex items-center justify-between"
                     >
-                      <span className={`text-[26px] ${location ? "text-black" : "text-black/40"}`}>
+                      <span
+                        className={`text-[26px] ${location ? "text-black" : "text-black/40"}`}
+                      >
                         {location || "г. Москва, ул. 1-я Лагерная..."}
                       </span>
                       <svg

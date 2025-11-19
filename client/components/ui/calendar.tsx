@@ -26,13 +26,31 @@ export function Calendar({
         showOutsideDays
         weekStartsOn={0} // воскресенье
         styles={{
-          caption: { textAlign: "center", fontWeight: "bold", marginBottom: "0.5rem" },
-          nav: { display: "flex", justifyContent: "space-between", marginBottom: "1rem" },
+          caption: {
+            textAlign: "center",
+            fontWeight: "bold",
+            marginBottom: "0.5rem",
+          },
+          nav: {
+            display: "flex",
+            justifyContent: "space-between",
+            marginBottom: "1rem",
+          },
           table: { width: "100%", borderCollapse: "collapse" },
           head_row: { display: "flex", justifyContent: "space-between" },
-          head_cell: { width: "2rem", textAlign: "center", fontSize: "0.8rem", color: "#666" },
+          head_cell: {
+            width: "2rem",
+            textAlign: "center",
+            fontSize: "0.8rem",
+            color: "#666",
+          },
           row: { display: "flex", justifyContent: "space-between" },
-          cell: { width: "2rem", height: "2rem", textAlign: "center", lineHeight: "2rem" },
+          cell: {
+            width: "2rem",
+            height: "2rem",
+            textAlign: "center",
+            lineHeight: "2rem",
+          },
         }}
       />
     </div>
