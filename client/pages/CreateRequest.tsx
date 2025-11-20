@@ -8,16 +8,16 @@ export default function CreateRequest() {
   const navigate = useNavigate();
   const [sport, setSport] = useState("");
   const [numberOfPlayers, setNumberOfPlayers] = useState("");
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState<Date | undefined>(undefined);
+  const [dateInput, setDateInput] = useState("");
   const [time, setTime] = useState("");
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
   const [showSportDropdown, setShowSportDropdown] = useState(false);
-  const [showDateDropdown, setShowDateDropdown] = useState(false);
+  const [showDatePopover, setShowDatePopover] = useState(false);
   const [showLocationDropdown, setShowLocationDropdown] = useState(false);
 
   const sportDropdownRef = useRef<HTMLDivElement>(null);
-  const dateDropdownRef = useRef<HTMLDivElement>(null);
   const locationDropdownRef = useRef<HTMLDivElement>(null);
 
   const dateOptions = [
