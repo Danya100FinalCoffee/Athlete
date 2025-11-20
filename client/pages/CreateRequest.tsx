@@ -114,7 +114,7 @@ export default function CreateRequest() {
           <div className="flex items-center justify-between mb-12">
             <div>
               <h1 className="text-[#C9D2FF] text-2xl font-medium mb-1">
-                Добрый ��ень, Захар
+                Добрый день, Захар
               </h1>
               <p className="text-white text-base font-light">
                 Сб, 11 октября 2025
@@ -231,7 +231,7 @@ export default function CreateRequest() {
               className="absolute inset-0 -z-10 rounded-[50px]"
               style={{
                 backgroundImage:
-                  "url('https://cdn.builder.io/api/v1/image/assets%2F9b4b6868ed8d4ab0841339e996a44e0f%2F29814a62ea5a4dbaab3e007976816fb6?format=webp&width=800')",
+                  "url('/silver.png')",
                 backgroundSize: "250px 250px",
                 backgroundPosition: "0 0",
                 backgroundRepeat: "repeat",
