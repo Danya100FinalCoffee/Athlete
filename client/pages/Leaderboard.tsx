@@ -78,7 +78,7 @@ export default function Leaderboard() {
                 onClick={() => setActiveTab("overall")}
                 className={`h-[76px] px-8 rounded-[20px] border-[2.6px] border-black transition-all ${activeTab === "overall" ? "bg-[#D9D9D9]/40" : "bg-[#D9D9D9]/20"}`}
               >
-                <span className="text-white text-[32px] font-light">Общий рейтинг</span>
+                <span className="text-white text-[32px] font-light ml-10">Общий рейтинг</span>
               </button>
 
               <button
