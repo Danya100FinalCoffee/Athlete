@@ -333,7 +333,7 @@ export default function CreateRequest() {
                 {/* Time Input */}
                 <div>
                   <label className="block text-white text-[32px] font-normal mb-4 opacity-80">
-                    Вв��дите время проведения
+                    Введите время проведения
                   </label>
                   <input
                     type="text"
