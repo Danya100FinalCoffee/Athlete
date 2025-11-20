@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { LEADERBOARD_DATA, HEADER_DATA } from "@/constants/leaderboardConstants";
@@ -7,9 +6,10 @@ import { SPORTS } from "@/constants/filterConstants";
 export default function Leaderboard() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("overall");
-
   const [sportFilter, setSportFilter] = useState("Литрбол");
   const [showSportDropdown, setShowSportDropdown] = useState(false);
+  const [showDateDropdown, setShowDateDropdown] = useState(false);
+
   const sportDropdownRef = useRef(null);
   const dateDropdownRef = useRef(null);
 
@@ -22,6 +22,7 @@ export default function Leaderboard() {
         setShowDateDropdown(false);
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
@@ -43,8 +44,8 @@ export default function Leaderboard() {
                 onClick={() => navigate("/find-requests")}
                 className="w-[46px] h-[47px] rounded-[10px] bg-white/50 flex items-center justify-center hover:bg-white/70 transition-colors"
               >
-                <svg className="w-[22px] h-[22px]" viewBox="0 0 22 22" fill="none">
-                  <path d="M21.4399 18.1558L15.3026 12.0068C15.9579 10.8276 16.3026 9.50113 16.3041 8.15207C16.3041 6.53974 15.826 4.96362 14.9303 3.62302C14.0345 2.28242 12.7613 1.23755 11.2717 0.620543C9.78213 0.00353215 8.14303 -0.157906 6.56168 0.156643C4.98033 0.471193 3.52777 1.2476 2.38769 2.38769C1.2476 3.52777 0.471193 4.98033 0.156643 6.56168C-0.157906 8.14303 0.00353215 9.78213 0.620543 11.2717C1.23755 12.7613 2.28242 14.0345 3.62302 14.9303C4.96362 15.826 6.53974 16.3041 8.15207 16.3041C9.50113 16.3026 10.8276 15.9579 12.0068 15.3026L18.1558 21.4399C18.6014 21.8215 19.1745 22.0209 19.7607 21.9983C20.3469 21.9756 20.903 21.7326 21.3178 21.3178C21.7326 20.903 21.9756 20.3469 21.9983 19.7607C22.0209 19.1745 21.8215 18.6014 21.4399 18.1558Z" fill="black" fillOpacity="0.6" />
+                <svg className="w-[22px] h-[22px]" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21.4399 18.1558L15.3026 12.0068C15.9579 10.8276 16.3026 9.50113 16.3041 8.15207..." fill="black" fillOpacity="0.6" />
                 </svg>
               </button>
 
@@ -60,21 +61,20 @@ export default function Leaderboard() {
               </button>
 
               <div className="w-[46px] h-[45px] rounded-[10px] bg-white/50 flex items-center justify-center">
-                <svg className="w-[21px] h-[21px]" viewBox="0 0 22 21" fill="none">
-                  <path d="M10.6279 5.62871V8.53921" stroke="black" strokeWidth="1.5" />
-                  <path d="M10.6457 1.74805C7.38654 1.74805 4.74729 4.35264 4.74729 7.56904V9.40449C4.74729 9.99883 4.4993 10.8903 4.18932 11.3973L3.06454 13.2502C2.37373 14.3952 2.85199 15.6712 4.12733 16.0908C8.36076 17.4805 12.9396 17.4805 17.173 16.0908C18.3687 15.6975 18.8823 14.3165 18.2358 13.2502L17.111 11.3973C16.801 10.8903 16.5531 9.99009 16.5531 9.40449V7.56904C16.5442 4.37012 13.8872 1.74805 10.6457 1.74805Z" stroke="black" strokeWidth="1.5" />
-                  <path d="M13.5772 16.4491C13.5772 18.0486 12.2487 19.3596 10.6279 19.3596C9.822 19.3596 9.07805 19.0275 8.54665 18.5031C8.01526 17.9787 7.67871 17.2445 7.67871 16.4491" stroke="black" strokeWidth="1.5" />
+                <svg className="w-[21px] h-[21px]" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.6279 5.62871V8.53921" stroke="black" strokeWidth="1.5" strokeLinecap="round" />
+                  <path d="M10.6457 1.74805C7.38654 1.74805 4.74729 4.35264 4.74729 7.56904V9.40449C4.74729 9.99883 4.4993 10.8903..." stroke="black" strokeWidth="1.5" />
                 </svg>
               </div>
 
               <button onClick={() => navigate("/profile")}>
-                <img src="/placeholder_avatar.jpg" className="w-[47px] h-[44px] rounded-[10px]" />
+                <img src="/placeholder_avatar.jpg" alt="Profile" className="w-[47px] h-[44px] rounded-[10px]" />
               </button>
             </div>
           </div>
 
           <div className="rounded-[10px] bg-[#797777]/50 p-8 min-h-[918px] relative">
-            <div className="flex gap-4 mb-12 items-center">
+            <div className="flex gap-4 mb-12">
               <button
                 onClick={() => setActiveTab("overall")}
                 className={`h-[76px] px-8 rounded-[20px] border-[2.6px] border-black transition-all ${activeTab === "overall" ? "bg-[#D9D9D9]/40" : "bg-[#D9D9D9]/20"}`}
@@ -90,20 +90,12 @@ export default function Leaderboard() {
               </button>
             </div>
 
-            <div className="flex gap-4 items-center">
+            <div className="flex gap-4">
               <div className="relative" ref={sportDropdownRef}>
                 <button
                   onClick={() => setShowSportDropdown(!showSportDropdown)}
                   className="w-[380px] h-[76px] rounded-[20px] border-[2.6px] border-black bg-[#D9D9D9]/40 flex items-center justify-center px-6 relative"
                 >
-                  <svg className="absolute left-6" width="29" height="2" fill="none">
-                    <line y1="1" x2="29" y2="1" stroke="#9D9D9D" strokeWidth="2" />
-                  </svg>
-
-                  <svg className="absolute left-[62px]" width="29" height="2" fill="none">
-                    <line y1="1" x2="29" y2="1" stroke="#9D9D9D" strokeWidth="2" />
-                  </svg>
-
                   <span className="text-white text-[32px] font-light">{sportFilter}</span>
                 </button>
 
@@ -116,7 +108,7 @@ export default function Leaderboard() {
                           setSportFilter(sport);
                           setShowSportDropdown(false);
                         }}
-                        className="w-full px-6 py-4 text-left text-white text-[20px] font-light hover:bg-[#3a3a3a] transition-colors first:rounded-t-[16px] last:rounded-b-[16px] border-b border-white/20 last:border-b-0"
+                        className="w-full px-6 py-4 text-left text-white text-[20px] font-light hover:bg-[#3a3a3a] transition-colors border-b border-white/20 last:border-b-0"
                       >
                         {sport}
                       </button>
@@ -126,7 +118,7 @@ export default function Leaderboard() {
               </div>
             </div>
 
-            <div className="space-y-3 pr-2 max-h-[700px] overflow-y-auto custom-scrollbar mt-6">
+            <div className="space-y-3 pr-2 max-h-[700px] overflow-y-auto custom-scrollbar">
               {LEADERBOARD_DATA.map((player) => (
                 <div key={player.id} className="flex items-center gap-3 h-[78px]">
                   <div className="w-[81px] h-[76px] flex items-center justify-center rounded-[20px] border-[2.6px] border-black bg-[#D9D9D9]/20 flex-shrink-0">
@@ -134,10 +126,7 @@ export default function Leaderboard() {
                   </div>
 
                   <div className="flex-1 flex items-center gap-4 h-[78px] rounded-[20px] border-[1.5px] border-black bg-gradient-to-r from-[#4F0A0A] to-[#780000] px-4">
-                    <div
-                      className="w-[40px] h-[36px] rounded-full flex-shrink-0 bg-cover bg-center"
-                      style={{ backgroundImage: `url(${player.avatar})` }}
-                    />
+                    <div className="w-[40px] h-[36px] rounded-full flex-shrink-0 bg-cover bg-center" style={{ backgroundImage: `url(${player.avatar})` }} />
 
                     <div className="min-w-[141px]">
                       <p className="text-white text-[10px] font-bold leading-tight [text-shadow:_1px_1px_0_rgb(0_0_0)]">{player.name}</p>
@@ -150,18 +139,16 @@ export default function Leaderboard() {
                           background: `linear-gradient(180deg, ${player.badgeGradientFrom} 10.58%, ${player.badgeGradientTo} 50%, #FFF 100%)`,
                           WebkitBackgroundClip: "text",
                           WebkitTextFillColor: "transparent",
-                          backgroundClip: "text",
                         }}
                       >
                         {player.badge}
                       </p>
-
                       <p className="text-white text-[12px] font-bold leading-tight [text-shadow:_1px_1px_0_rgb(0_0_0)]">
                         Уровень опыта: {player.level} ({player.currentXP}/{player.maxXP})
                       </p>
                     </div>
 
-                    <img src={player.medalImage} className="w-[66px] h-[66px] flex-shrink-0" />
+                    <img src={player.medalImage} alt="Medal" className="w-[66px] h-[66px] flex-shrink-0" />
                   </div>
                 </div>
               ))}
