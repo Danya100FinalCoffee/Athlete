@@ -387,7 +387,7 @@ export default function ProfileStats() {
               {/* Middle Card - Recent Games */}
               <div className="rounded-[55px] border-[3px] border-black bg-[#4986F9]/40 shadow-[0_14px_4px_0_rgba(0,0,0,0.50)] p-6">
                 <h3 className="text-black text-[30px] text-center mb-6">
-                  ��оследние игры ({USER_STATS.recentGames.length})
+                  Последние игры ({USER_STATS.recentGames.length})
                 </h3>
 
                 <div className="space-y-4">
@@ -414,7 +414,7 @@ export default function ProfileStats() {
                   onClick={() => navigate("/public-profile")}
                   className="w-full mt-6 bg-[#4182F9] text-white text-sm rounded-lg px-6 py-2 drop-shadow-[0_8px_4px_rgba(0,0,0,0.50)] hover:bg-[#3671E8] transition-colors"
                 >
-                  Как мой проф��ль видят другие люди?
+                  Как мой профиль видят другие люди?
                 </button>
               </div>
 
