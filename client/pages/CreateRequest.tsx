@@ -271,7 +271,19 @@ export default function CreateRequest() {
                   <input
                     type="text"
                     value={numberOfPlayers}
-                    onChange={(e) => setNumberOfPlayers(e.target.value)}
+                    onChange={(e) => {
+                      const input = e.target.value;
+                      if (input === "") {
+                        setNumberOfPlayers("");
+                      } else if (/^\d+$/.test(input)) {
+                        const num = parseInt(input, 10);
+                        if (num > 256) {
+                          setNumberOfPlayers("256");
+                        } else {
+                          setNumberOfPlayers(input);
+                        }
+                      }
+                    }}
                     placeholder="Число от 2 до 256"
                     className="w-full h-[68px] rounded-[15px] bg-[#F9F9F9]/50 px-5 text-[28px] text-black placeholder:text-black/40 outline-none"
                   />
@@ -348,7 +360,7 @@ export default function CreateRequest() {
                 {/* Location */}
                 <div>
                   <label className="block text-white text-[32px] font-normal mb-4 opacity-80">
-                    Место проведения (начинайте вводить или выберите точку на
+                    Место проведения (начинайте вводить или выберите точ��у на
                     карте)
                   </label>
                   <div className="relative" ref={locationDropdownRef}>
