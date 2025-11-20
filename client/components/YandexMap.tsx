@@ -21,7 +21,12 @@ export default function YandexMap({ onAddressSelect, height = "327px" }: YandexM
       script.src = "https://api-maps.yandex.ru/2.1/?apikey=5fc13c47-2b27-472d-ad58-b5695c1e0d67&lang=ru_RU";
       script.async = true;
       script.onload = () => {
-        (window as any).ymaps.ready(initializeMap);
+        (window as any).ymaps.ready(() => {
+          const ymaps = (window as any).ymaps;
+          ymaps.modules.require(['geocode'], () => {
+            initializeMap();
+          });
+        });
       };
       document.head.appendChild(script);
     };
