@@ -1,0 +1,243 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { LEADERBOARD_DATA, HEADER_DATA } from "@/constants/leaderboardConstants";
+
+export default function Leaderboard() {
+  const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState<"overall" | "me">("overall");
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-black to-[#493D02] overflow-y-auto">
+      <div className="flex min-h-screen">
+        {/* Main Content */}
+        <div className="flex-1 p-7">
+          {/* Header */}
+          <div className="flex items-center justify-between mb-12">
+            <div>
+              <h1 className="text-[#D3D4A9] text-2xl font-medium mb-1 drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
+                {HEADER_DATA.welcomeMessage}
+              </h1>
+              <p className="text-white text-base font-light">
+                {HEADER_DATA.currentDate}
+              </p>
+            </div>
+
+            <div className="flex items-center gap-4">
+              {/* Search */}
+              <button
+                onClick={() => navigate("/find-requests")}
+                className="w-[46px] h-[47px] rounded-[10px] bg-white/50 flex items-center justify-center hover:bg-white/70 transition-colors"
+              >
+                <svg
+                  className="w-[22px] h-[22px]"
+                  viewBox="0 0 22 22"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M21.4399 18.1558L15.3026 12.0068C15.9579 10.8276 16.3026 9.50113 16.3041 8.15207C16.3041 6.53974 15.826 4.96362 14.9303 3.62302C14.0345 2.28242 12.7613 1.23755 11.2717 0.620543C9.78213 0.00353215 8.14303 -0.157906 6.56168 0.156643C4.98033 0.471193 3.52777 1.2476 2.38769 2.38769C1.2476 3.52777 0.471193 4.98033 0.156643 6.56168C-0.157906 8.14303 0.00353215 9.78213 0.620543 11.2717C1.23755 12.7613 2.28242 14.0345 3.62302 14.9303C4.96362 15.826 6.53974 16.3041 8.15207 16.3041C9.50113 16.3026 10.8276 15.9579 12.0068 15.3026L18.1558 21.4399C18.6014 21.8215 19.1745 22.0209 19.7607 21.9983C20.3469 21.9756 20.903 21.7326 21.3178 21.3178C21.7326 20.903 21.9756 20.3469 21.9983 19.7607C22.0209 19.1745 21.8215 18.6014 21.4399 18.1558ZM2.32916 8.15207C2.32916 7.00041 2.67067 5.87461 3.3105 4.91704C3.95033 3.95946 4.85974 3.21313 5.92374 2.77241C6.98774 2.33169 8.15853 2.21637 9.28806 2.44105C10.4176 2.66573 11.4551 3.22031 12.2695 4.03465C13.0838 4.849 13.6384 5.88654 13.8631 7.01608C14.0878 8.14561 13.9725 9.3164 13.5317 10.3804C13.091 11.4444 12.3447 12.3538 11.3871 12.9936C10.4295 13.6335 9.30373 13.975 8.15207 13.975C6.60774 13.975 5.12666 13.3615 4.03465 12.2695C2.94265 11.1775 2.32916 9.6964 2.32916 8.15207Z"
+                    fill="black"
+                    fillOpacity="0.6"
+                  />
+                </svg>
+              </button>
+
+              {/* Stats */}
+              <div className="w-[46px] h-[47px] rounded-[10px] bg-white/50 flex items-center justify-center relative">
+                <div className="w-[7px] h-[20px] border-[0.3px] border-black bg-[#D9D9D9] absolute left-3 top-[13px]"></div>
+                <div className="w-[7px] h-[11px] border-[0.3px] border-black bg-[#D9D9D9] absolute left-[19px] top-[22px]"></div>
+                <div className="w-[7px] h-[16px] border-[0.3px] border-black bg-[#D9D9D9] absolute left-[26px] top-[17px]"></div>
+              </div>
+
+              {/* Leaderboard/Ranking - Active */}
+              <button
+                onClick={() => navigate("/leaderboard")}
+                className="w-[46px] h-[47px] rounded-[10px] bg-white flex items-center justify-center"
+              >
+                <svg
+                  className="w-[21px] h-[21px]"
+                  viewBox="0 0 21 21"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M16.625 7.875C16.625 9.14375 16.2487 10.3075 15.6012 11.2788C14.6562 12.6788 13.16 13.6675 11.4188 13.9213C11.1213 13.9738 10.815 14 10.5 14C10.185 14 9.87875 13.9738 9.58125 13.9213C7.84 13.6675 6.34375 12.6788 5.39875 11.2788C4.75125 10.3075 4.375 9.14375 4.375 7.875C4.375 4.48875 7.11375 1.75 10.5 1.75C13.8862 1.75 16.625 4.48875 16.625 7.875Z"
+                    stroke="black"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M18.5937 16.1613L17.1499 16.5025C16.8262 16.5812 16.5724 16.8263 16.5024 17.15L16.1962 18.4363C16.0299 19.1363 15.1374 19.3463 14.6737 18.795L10.4999 14L6.3262 18.8038C5.86245 19.355 4.96995 19.145 4.8037 18.445L4.49745 17.1587C4.4187 16.835 4.16495 16.5813 3.84995 16.5113L2.4062 16.17C1.7412 16.0125 1.50495 15.1813 1.9862 14.7L5.3987 11.2875C6.3437 12.6875 7.83995 13.6763 9.5812 13.93C9.8787 13.9825 10.1849 14.0088 10.4999 14.0088C10.8149 14.0088 11.1212 13.9825 11.4187 13.93C13.1599 13.6763 14.6562 12.6875 15.6012 11.2875L19.0137 14.7C19.4949 15.1725 19.2587 16.0038 18.5937 16.1613Z"
+                    stroke="black"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M11.0077 5.2325L11.524 6.26499C11.594 6.40499 11.7777 6.545 11.944 6.57125L12.8802 6.72874C13.4752 6.82499 13.6152 7.2625 13.1865 7.69125L12.4602 8.41749C12.3377 8.53999 12.2677 8.77625 12.3115 8.95125L12.5215 9.8525C12.6877 10.5612 12.3115 10.8412 11.6815 10.465L10.8065 9.94874C10.649 9.85249 10.3865 9.85249 10.229 9.94874L9.35397 10.465C8.72397 10.8325 8.34772 10.5612 8.51397 9.8525L8.72397 8.95125C8.75897 8.785 8.69772 8.53999 8.57522 8.41749L7.84897 7.69125C7.42022 7.2625 7.56022 6.83374 8.15522 6.72874L9.09147 6.57125C9.24897 6.545 9.43272 6.40499 9.50272 6.26499L10.019 5.2325C10.2727 4.6725 10.7277 4.6725 11.0077 5.2325Z"
+                    stroke="black"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+
+              {/* Notifications */}
+              <div className="w-[46px] h-[45px] rounded-[10px] bg-white/50 flex items-center justify-center">
+                <svg
+                  className="w-[21px] h-[21px]"
+                  viewBox="0 0 22 21"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M10.6279 5.62871V8.53921"
+                    stroke="black"
+                    strokeWidth="1.5"
+                    strokeMiterlimit="10"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M10.6457 1.74805C7.38654 1.74805 4.74729 4.35264 4.74729 7.56904V9.40449C4.74729 9.99883 4.4993 10.8903 4.18932 11.3973L3.06454 13.2502C2.37373 14.3952 2.85199 15.6712 4.12733 16.0908C8.36076 17.4805 12.9396 17.4805 17.173 16.0908C18.3687 15.6975 18.8823 14.3165 18.2358 13.2502L17.111 11.3973C16.801 10.8903 16.5531 9.99009 16.5531 9.40449V7.56904C16.5442 4.37012 13.8872 1.74805 10.6457 1.74805Z"
+                    stroke="black"
+                    strokeWidth="1.5"
+                    strokeMiterlimit="10"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M13.5772 16.4491C13.5772 18.0486 12.2487 19.3596 10.6279 19.3596C9.822 19.3596 9.07805 19.0275 8.54665 18.5031C8.01526 17.9787 7.67871 17.2445 7.67871 16.4491"
+                    stroke="black"
+                    strokeWidth="1.5"
+                    strokeMiterlimit="10"
+                  />
+                </svg>
+              </div>
+
+              {/* Profile Picture */}
+              <button onClick={() => navigate("/profile")}>
+                <img
+                  src="/placeholder_avatar.jpg"
+                  alt="Profile"
+                  className="w-[47px] h-[44px] rounded-[10px]"
+                />
+              </button>
+            </div>
+          </div>
+
+          {/* Leaderboard Content */}
+          <div className="rounded-[10px] bg-[#797777]/50 p-8 min-h-[918px] relative">
+            {/* Tabs */}
+            <div className="flex gap-4 mb-12">
+              <button
+                onClick={() => setActiveTab("overall")}
+                className={`h-[76px] px-8 rounded-[20px] border-[2.6px] border-black transition-all ${
+                  activeTab === "overall"
+                    ? "bg-[#D9D9D9]/40"
+                    : "bg-[#D9D9D9]/20"
+                }`}
+              >
+                <span className="text-white text-[32px] font-light">
+                  Общий рейтинг
+                </span>
+              </button>
+              <button
+                onClick={() => setActiveTab("me")}
+                className={`h-[76px] px-8 rounded-[20px] border-[2.6px] border-black transition-all ${
+                  activeTab === "me"
+                    ? "bg-[#D9D9D9]/40"
+                    : "bg-[#D9D9D9]/20"
+                }`}
+              >
+                <span className="text-white text-[24px] font-light">
+                  Показать меня
+                </span>
+              </button>
+            </div>
+
+            {/* Leaderboard List */}
+            <div className="space-y-3 pr-2 max-h-[700px] overflow-y-auto custom-scrollbar">
+              {LEADERBOARD_DATA.map((player) => (
+                <div
+                  key={player.id}
+                  className="flex items-center gap-3 h-[78px]"
+                >
+                  {/* Rank */}
+                  <div className="w-[81px] h-[76px] flex items-center justify-center rounded-[20px] border-[2.6px] border-black bg-[#D9D9D9]/20 flex-shrink-0">
+                    <span className="text-[#D9D9D9]/50 text-2xl font-bold">
+                      {player.rank}
+                    </span>
+                  </div>
+
+                  {/* Player Card */}
+                  <div className="flex-1 flex items-center gap-4 h-[78px] rounded-[20px] border-[1.5px] border-black bg-gradient-to-r from-[#4F0A0A] to-[#780000] px-4">
+                    {/* Avatar */}
+                    <div
+                      className="w-[40px] h-[36px] rounded-full flex-shrink-0 bg-cover bg-center"
+                      style={{ backgroundImage: `url(${player.avatar})` }}
+                    />
+
+                    {/* Name */}
+                    <div className="min-w-[141px]">
+                      <p className="text-white text-[10px] font-bold leading-tight [text-shadow:_1px_1px_0_rgb(0_0_0)]">
+                        {player.name}
+                      </p>
+                    </div>
+
+                    {/* Badge and Level */}
+                    <div className="flex-1 min-w-[229px]">
+                      <p
+                        className="text-[12px] font-bold leading-tight [text-shadow:_1px_1px_0_rgb(0_0_0)]"
+                        style={{
+                          background: `linear-gradient(180deg, ${player.badgeGradientFrom} 10.58%, ${player.badgeGradientTo} 50%, #FFF 100%)`,
+                          WebkitBackgroundClip: "text",
+                          WebkitTextFillColor: "transparent",
+                          backgroundClip: "text",
+                        }}
+                      >
+                        {player.badge}
+                      </p>
+                      <p className="text-white text-[12px] font-bold leading-tight [text-shadow:_1px_1px_0_rgb(0_0_0)]">
+                        Уровень опыта: {player.level} ({player.currentXP}/{player.maxXP})
+                      </p>
+                    </div>
+
+                    {/* Medal */}
+                    <img
+                      src={player.medalImage}
+                      alt="Medal"
+                      className="w-[66px] h-[66px] flex-shrink-0"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Custom Scrollbar Indicator */}
+            <div className="absolute right-8 top-[260px] w-[6px] h-[71px] rounded-full bg-[#5D5D5D]"></div>
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 6px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #5D5D5D;
+          border-radius: 40px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #7D7D7D;
+        }
+      `}</style>
+    </div>
+  );
+}
