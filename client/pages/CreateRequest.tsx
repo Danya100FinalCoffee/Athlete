@@ -20,13 +20,6 @@ export default function CreateRequest() {
   const sportDropdownRef = useRef<HTMLDivElement>(null);
   const locationDropdownRef = useRef<HTMLDivElement>(null);
 
-  const dateOptions = [
-    "Сегодня",
-    "Завтра",
-    "На этой неделе",
-    "На следующей неделе",
-  ];
-
   const locationSuggestions = [
     "г. Москва, ул. 1-я Лагерная, д. 1",
     "г. Москва, Московский авиационный институт",
