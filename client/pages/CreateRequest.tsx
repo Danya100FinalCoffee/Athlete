@@ -289,52 +289,52 @@ export default function CreateRequest() {
                   <label className="block text-white text-[32px] font-normal mb-4 opacity-80">
                     Выберите дату проведения
                   </label>
-                  <div className="relative" ref={dateDropdownRef}>
-                    <button
-                      type="button"
-                      onClick={() => setShowDateDropdown(!showDateDropdown)}
-                      className="w-full h-[68px] rounded-[15px] bg-[#F9F9F9]/50 px-5 flex items-center justify-between"
-                    >
-                      <span
-                        className={`text-[24px] ${date ? "text-black" : "text-black/40"}`}
+                  <Popover open={showDatePopover} onOpenChange={setShowDatePopover}>
+                    <PopoverTrigger asChild>
+                      <button
+                        type="button"
+                        className="w-full h-[68px] rounded-[15px] bg-[#F9F9F9]/50 px-5 flex items-center justify-between"
                       >
-                        {date ||
-                          "Выберите из списка или введите в формате ДД.ММ.ГГГГ"}
-                      </span>
-                      <svg
-                        className="w-[35px] h-[35px] opacity-50"
-                        viewBox="0 0 35 35"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M29.0502 13.0518L19.5419 22.5601C18.4189 23.683 16.5814 23.683 15.4585 22.5601L5.9502 13.0518"
-                          stroke="#292D32"
-                          strokeWidth="1.5"
-                          strokeMiterlimit="10"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
+                        <span
+                          className={`text-[24px] ${dateInput ? "text-black" : "text-black/40"}`}
+                        >
+                          {dateInput ||
+                            "Выберите из списка или введите в формате ДД.ММ.ГГГГ"}
+                        </span>
+                        <svg
+                          className="w-[35px] h-[35px] opacity-50"
+                          viewBox="0 0 35 35"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M29.0502 13.0518L19.5419 22.5601C18.4189 23.683 16.5814 23.683 15.4585 22.5601L5.9502 13.0518"
+                            stroke="#292D32"
+                            strokeWidth="1.5"
+                            strokeMiterlimit="10"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0 bg-white">
+                      <div className="flex flex-col gap-4 p-4">
+                        <input
+                          type="text"
+                          value={dateInput}
+                          onChange={(e) => handleDateInputChange(e.target.value)}
+                          placeholder="ДД.ММ.ГГГГ"
+                          className="w-full h-[44px] rounded-[10px] border border-black px-3 text-[16px] text-black placeholder:text-black/40 outline-none focus:border-blue-500"
                         />
-                      </svg>
-                    </button>
-                    {showDateDropdown && (
-                      <div className="absolute top-[76px] left-0 w-full bg-[#2a2a2a] border-2 border-black rounded-[15px] shadow-lg z-50">
-                        {dateOptions.map((dateOption) => (
-                          <button
-                            key={dateOption}
-                            type="button"
-                            onClick={() => {
-                              setDate(dateOption);
-                              setShowDateDropdown(false);
-                            }}
-                            className="w-full px-5 py-3 text-left text-white text-[20px] font-light hover:bg-[#3a3a3a] transition-colors border-b border-white/20 last:border-b-0"
-                          >
-                            {dateOption}
-                          </button>
-                        ))}
+                        <Calendar
+                          selected={date}
+                          onSelect={handleCalendarSelect}
+                          mode="single"
+                        />
                       </div>
-                    )}
-                  </div>
+                    </PopoverContent>
+                  </Popover>
                 </div>
 
                 {/* Time Input */}
