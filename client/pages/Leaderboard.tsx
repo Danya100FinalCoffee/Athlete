@@ -3,17 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { LEADERBOARD_DATA, HEADER_DATA } from "@/constants/leaderboardConstants";
 import { SPORTS } from "@/constants/filterConstants";
 
-export function Leaderboard() {
+export default function Leaderboard() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<"overall" | "me">("overall");
 
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-[#493D02] overflow-y-auto">
-      {/* ...весь твой код Leaderboard... */}
-    </div>
-  );
-}
-export function FindRequests() {
+export default function FindRequests() {
   const navigate = useNavigate();
   const [sportFilter, setSportFilter] = useState("Литрбол");
   const [dateFilter, setDateFilter] = useState("По дате");
@@ -31,18 +25,7 @@ export function FindRequests() {
       if (dateDropdownRef.current && !dateDropdownRef.current.contains(event.target as Node)) {
         setShowDateDropdown(false);
       }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-[#493D02] overflow-y-auto">
-      {/* ...весь твой код FindRequests... */}
-    </div>
-  );
-
+};
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-[#493D02] overflow-y-auto">
