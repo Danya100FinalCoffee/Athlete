@@ -42,7 +42,7 @@ export function FindRequests() {
       {/* ...весь твой код FindRequests... */}
     </div>
   );
-}
+
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-[#493D02] overflow-y-auto">
