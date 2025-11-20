@@ -94,7 +94,7 @@ export default function CreateRequest() {
     console.log("Submitting request:", {
       sport,
       numberOfPlayers,
-      date,
+      date: dateInput,
       time,
       location,
       description,
@@ -333,7 +333,7 @@ export default function CreateRequest() {
                 {/* Time Input */}
                 <div>
                   <label className="block text-white text-[32px] font-normal mb-4 opacity-80">
-                    Введите время проведения
+                    Вв��дите время проведения
                   </label>
                   <input
                     type="text"
