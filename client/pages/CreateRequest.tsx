@@ -276,7 +276,7 @@ export default function CreateRequest() {
                 {/* Number of Players */}
                 <div>
                   <label className="block text-white text-[32px] font-normal mb-4 opacity-80">
-                    Введите кол-во игрок��в
+                    Введите кол-во игроков
                   </label>
                   <input
                     type="text"
@@ -445,13 +445,10 @@ export default function CreateRequest() {
                 </div>
 
                 {/* Map */}
-                <div className="w-full h-[327px] rounded-[40px] overflow-hidden">
-                  <img
-                    src="https://api.builder.io/api/v1/image/assets/TEMP/dc4c9bfcde261847aacd27512fcbd319bc6457ec?width=1134"
-                    alt="Map"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+                <YandexMap
+                  onAddressSelect={(address) => setLocation(address)}
+                  height="327px"
+                />
 
                 {/* Submit Button */}
                 <button
