@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { LEADERBOARD_DATA, HEADER_DATA } from "@/constants/leaderboardConstants";
-import { SPORTS } from "@/constants/filterConstants";
+import { RATING_SPORTS } from "@/constants/filterConstants";
 
 export default function Leaderboard() {
   const navigate = useNavigate();
@@ -101,7 +101,7 @@ export default function Leaderboard() {
 
                 {showSportDropdown && (
                   <div className="absolute top-[88px] left-0 w-[380px] bg-[#2a2a2a] border-[2.6px] border-black rounded-[20px] shadow-lg z-50">
-                    {SPORTS.map((sport) => (
+                    {RATING_SPORTS.map((sport) => (
                       <button
                         key={sport}
                         onClick={() => {
