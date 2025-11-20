@@ -267,7 +267,7 @@ export default function Profile() {
 
               {/* Profile Picture */}
               <img
-                src="https://api.builder.io/api/v1/image/assets/TEMP/000c31178b1986558f577f90ead0f3bed101a8c7?width=94"
+                src="/placeholder_avatar.jpg"
                 alt="Profile"
                 className="w-[47px] h-[44px] rounded-[10px]"
               />
