@@ -8,7 +8,6 @@ interface YandexMapProps {
 export default function YandexMap({ onAddressSelect, height = "327px" }: YandexMapProps) {
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapInstance = useRef<any>(null);
-  const [mapReady, setMapReady] = useState(false);
 
   useEffect(() => {
     const loadYandexMaps = () => {
