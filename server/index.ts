@@ -23,6 +23,8 @@ export function createServer() {
   app.get("/api/geocode", async (req, res) => {
     const { longitude, latitude } = req.query;
 
+    console.log("Geocoding request received:", { longitude, latitude });
+
     if (!longitude || !latitude) {
       return res.status(400).json({ error: "Missing longitude or latitude" });
     }
@@ -31,12 +33,19 @@ export function createServer() {
       const apiKey = "5fc13c47-2b27-472d-ad58-b5695c1e0d67";
       const apiUrl = `https://geocode-maps.yandex.ru/1.x/?apikey=${apiKey}&geocode=${longitude},${latitude}&format=json`;
 
+      console.log("Calling Yandex API:", apiUrl);
+
       const response = await fetch(apiUrl);
+      console.log("Yandex API response status:", response.status);
+
       if (!response.ok) {
+        const errorText = await response.text();
+        console.error("Yandex API error response:", errorText);
         throw new Error(`Yandex API error: ${response.status}`);
       }
 
       const data = await response.json();
+      console.log("Yandex API response data:", data);
 
       if (
         data.response &&
@@ -46,13 +55,16 @@ export function createServer() {
       ) {
         const firstResult = data.response.GeoObjectCollection.featureMember[0];
         const address = firstResult.GeoObject.metaDataProperty.GeocoderMetaData.text;
+        console.log("Found address:", address);
         return res.json({ address });
       }
 
+      console.log("No geocoding results found");
       return res.json({ address: null });
     } catch (error) {
       console.error("Geocoding error:", error);
-      res.status(500).json({ error: "Failed to geocode coordinates" });
+      const errorMessage = error instanceof Error ? error.message : "Unknown error";
+      res.status(500).json({ error: errorMessage });
     }
   });
 
