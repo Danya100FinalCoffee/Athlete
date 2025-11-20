@@ -10,9 +10,7 @@ export default function Leaderboard() {
 export default function FindRequests() {
   const navigate = useNavigate();
   const [sportFilter, setSportFilter] = useState("Литрбол");
-  const [dateFilter, setDateFilter] = useState("По дате");
   const [showSportDropdown, setShowSportDropdown] = useState(false);
-  const [showDateDropdown, setShowDateDropdown] = useState(false);
 
   const sportDropdownRef = useRef<HTMLDivElement>(null);
   const dateDropdownRef = useRef<HTMLDivElement>(null);
