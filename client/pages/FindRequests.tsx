@@ -264,7 +264,7 @@ export default function FindRequests() {
                 onClick={() => navigate("/profile")}
               >
                 <img
-                  src="/placeholder_avatar.jpd"
+                  src="/placeholder_avatar.jpg"
                   alt="Profile"
                   className="w-[47px] h-[44px] rounded-[10px]"
                 />
