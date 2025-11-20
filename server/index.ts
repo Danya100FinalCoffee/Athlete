@@ -77,7 +77,8 @@ export function createServer() {
       return res.json({ address: null });
     } catch (error) {
       console.error("Geocoding error:", error);
-      const errorMessage = error instanceof Error ? error.message : "Unknown error";
+      const errorMessage =
+        error instanceof Error ? error.message : "Unknown error";
       res.status(500).json({ error: errorMessage });
     }
   });

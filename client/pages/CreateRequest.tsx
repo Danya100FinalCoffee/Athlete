@@ -201,8 +201,7 @@ export default function CreateRequest() {
             <div
               className="absolute inset-0 -z-10 rounded-[50px]"
               style={{
-                backgroundImage:
-                  "url('/silver.png')",
+                backgroundImage: "url('/silver.png')",
                 backgroundSize: "250px 250px",
                 backgroundPosition: "0 0",
                 backgroundRepeat: "repeat",

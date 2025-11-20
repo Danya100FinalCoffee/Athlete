@@ -5,7 +5,10 @@ interface YandexMapProps {
   height?: string;
 }
 
-export default function YandexMap({ onAddressSelect, height = "327px" }: YandexMapProps) {
+export default function YandexMap({
+  onAddressSelect,
+  height = "327px",
+}: YandexMapProps) {
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapInstance = useRef<any>(null);
 
@@ -17,7 +20,8 @@ export default function YandexMap({ onAddressSelect, height = "327px" }: YandexM
       }
 
       const script = document.createElement("script");
-      script.src = "https://api-maps.yandex.ru/2.1/?apikey=fc9d5a45-9eb0-4980-a2c8-21b53a4ddbd4&lang=ru_RU";
+      script.src =
+        "https://api-maps.yandex.ru/2.1/?apikey=fc9d5a45-9eb0-4980-a2c8-21b53a4ddbd4&lang=ru_RU";
       script.async = true;
       script.onload = () => {
         (window as any).ymaps.ready(initializeMap);
@@ -45,9 +49,13 @@ export default function YandexMap({ onAddressSelect, height = "327px" }: YandexM
         const coords = e.get("coords");
         if (!coords) return;
 
-        const placemark = new ymaps.Placemark(coords, {}, {
-          preset: "islands#redDotIcon",
-        });
+        const placemark = new ymaps.Placemark(
+          coords,
+          {},
+          {
+            preset: "islands#redDotIcon",
+          },
+        );
 
         map.geoObjects.removeAll();
         map.geoObjects.add(placemark);
@@ -59,12 +67,17 @@ export default function YandexMap({ onAddressSelect, height = "327px" }: YandexM
           .then((response) => {
             console.log("Geocoding response status:", response.status);
             if (!response.ok) {
-              return response.json().then((errorData) => {
-                console.error("Server error response:", errorData);
-                throw new Error(`HTTP error! status: ${response.status}, message: ${errorData.error}`);
-              }).catch(() => {
-                throw new Error(`HTTP error! status: ${response.status}`);
-              });
+              return response
+                .json()
+                .then((errorData) => {
+                  console.error("Server error response:", errorData);
+                  throw new Error(
+                    `HTTP error! status: ${response.status}, message: ${errorData.error}`,
+                  );
+                })
+                .catch(() => {
+                  throw new Error(`HTTP error! status: ${response.status}`);
+                });
             }
             return response.json();
           })
