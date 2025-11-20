@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 interface YandexMapProps {
   onAddressSelect: (address: string) => void;
