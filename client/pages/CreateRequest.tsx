@@ -42,12 +42,6 @@ export default function CreateRequest() {
         setShowSportDropdown(false);
       }
       if (
-        dateDropdownRef.current &&
-        !dateDropdownRef.current.contains(event.target as Node)
-      ) {
-        setShowDateDropdown(false);
-      }
-      if (
         locationDropdownRef.current &&
         !locationDropdownRef.current.contains(event.target as Node)
       ) {
@@ -58,6 +52,49 @@ export default function CreateRequest() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  const formatDateToDisplay = (date: Date | undefined): string => {
+    if (!date) return "";
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const year = date.getFullYear();
+    return `${day}.${month}.${year}`;
+  };
+
+  const parseDateFromInput = (input: string): Date | null => {
+    const regex = /^(\d{2})\.(\d{2})\.(\d{4})$/;
+    const match = input.match(regex);
+    if (match) {
+      const day = parseInt(match[1], 10);
+      const month = parseInt(match[2], 10) - 1;
+      const year = parseInt(match[3], 10);
+      const parsedDate = new Date(year, month, day);
+      if (
+        parsedDate.getDate() === day &&
+        parsedDate.getMonth() === month &&
+        parsedDate.getFullYear() === year
+      ) {
+        return parsedDate;
+      }
+    }
+    return null;
+  };
+
+  const handleDateInputChange = (input: string) => {
+    setDateInput(input);
+    const parsed = parseDateFromInput(input);
+    if (parsed) {
+      setDate(parsed);
+    }
+  };
+
+  const handleCalendarSelect = (selectedDate: Date | undefined) => {
+    setDate(selectedDate);
+    if (selectedDate) {
+      setDateInput(formatDateToDisplay(selectedDate));
+      setShowDatePopover(false);
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
