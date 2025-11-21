@@ -252,9 +252,7 @@ export default function ProfileStats() {
               </div>
 
               {/* Profile Picture */}
-              <button
-                onClick={() => navigate(`/${username}/profile`)}
-              >
+              <button onClick={() => navigate(`/${username}/profile`)}>
                 <img
                   src="/placeholder_avatar.jpg"
                   alt="Profile"
