@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -12,13 +12,13 @@ export default function Login() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     // Simulate login logic
-    console.log("Login attempt:", { email, password, rememberMe });
+    console.log("Login attempt:", { username, password, rememberMe });
 
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
       // Redirect to profile after successful login
-      navigate("/profile");
+      navigate(`/${username}/profile`);
     }, 500);
   };
 
