@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 interface Request {
   id: number;
@@ -12,6 +12,7 @@ interface Request {
 
 export default function Requests() {
   const navigate = useNavigate();
+  const { username } = useParams<{ username: string }>();
 
   const requests: Request[] = [
     {
@@ -84,7 +85,7 @@ export default function Requests() {
           {/* Navigation Icons */}
           <div className="space-y-8 flex flex-col items-center mt-96">
             {/* Dashboard Icon */}
-            <button onClick={() => navigate("/profile")}>
+            <button onClick={() => navigate(`/${username}/profile`)}>
               <svg
                 className="w-[21px] h-[22px] opacity-50 mt-10"
                 viewBox="0 0 21 22"
@@ -111,7 +112,7 @@ export default function Requests() {
             </button>
 
             {/* Analytics Icon */}
-            <button onClick={() => navigate("/stats")}>
+            <button onClick={() => navigate(`/${username}/stats`)}>
               <svg
                 className="w-[21px] h-[20px] opacity-50 hover:opacity-100 transition-opacity"
                 viewBox="0 0 21 20"
@@ -321,7 +322,7 @@ export default function Requests() {
 
               {/* Profile Picture */}
               <button
-                onClick={() => navigate("/profile")}
+                onClick={() => navigate(`/${username}/profile`)}
               >
                 <img
                   src="/placeholder_avatar.jpg"
