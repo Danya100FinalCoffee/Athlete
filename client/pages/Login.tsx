@@ -46,17 +46,17 @@ export default function Login() {
           </h1>
 
           <form onSubmit={handleLogin} className="space-y-6">
-            {/* Email/Username Field */}
+            {/* Username Field */}
             <div className="relative">
               <div className="border border-[#212121] bg-black p-4">
                 <label className="block text-white text-[10px] font-medium mb-2">
-                  Адрес электронной почты/имя пользователя
+                  Имя пользователя
                 </label>
                 <input
                   type="text"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="mai@mai.education"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="pauchuck"
                   className="w-full bg-transparent text-[#616161] text-base outline-none placeholder:text-[#616161]"
                 />
               </div>
